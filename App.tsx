@@ -3,7 +3,7 @@ import './global.css';
 import { useEffect, useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import SplashScreen from './components/SplashScreen';
-import OnboardingScreen from './components/OnboardingScreen';
+import OnboardingOneScreen from './components/OnboardingOneScreen';
 import OnboardingTwoScreen from './components/OnboardingTwo';
 import OnboardingThreeScreen from './components/OnboardingThreeScreen';
 import LoginScreen from './components/LoginScreen';
@@ -36,7 +36,7 @@ export default function App() {
           onLoginSuccess={() => console.log('Login successful')}
         />
       ) : onboardingStep === 1 ? (
-        <OnboardingScreen
+        <OnboardingOneScreen
           onGetStarted={() => setOnboardingStep(2)}
           onSkip={() => setShowLogin(true)}
         />
