@@ -6,7 +6,7 @@ import SplashScreen from './components/SplashScreen';
 import OnboardingOneScreen from './components/OnboardingOneScreen';
 import OnboardingTwoScreen from './components/OnboardingTwo';
 import OnboardingThreeScreen from './components/OnboardingThreeScreen';
-import LoginScreen from './components/LoginScreen';
+import LoginScreen from './components/screens/LoginScreen';
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
