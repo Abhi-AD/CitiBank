@@ -1,17 +1,24 @@
+
 import { StatusBar } from 'expo-status-bar';
 import './global.css';
 import { useEffect, useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+
 import SplashScreen from './components/SplashScreen';
 import OnboardingOneScreen from './components/OnboardingOneScreen';
 import OnboardingTwoScreen from './components/OnboardingTwo';
 import OnboardingThreeScreen from './components/OnboardingThreeScreen';
+
 import LoginScreen from './components/screens/LoginScreen';
+import SignupScreen from './components/screens/SignupScreen';
+
+type AuthScreen = 'login' | 'signup';
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
   const [onboardingStep, setOnboardingStep] = useState(1);
   const [showLogin, setShowLogin] = useState(false);
+  const [authScreen, setAuthScreen] = useState<AuthScreen>('login');
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -23,18 +30,35 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <StatusBar style={showSplash ? "light" : !showLogin ? 'dark' : 'light'} />
+      <StatusBar
+        style={
+          showSplash
+            ? 'light'
+            : !showLogin
+              ? 'dark'
+              : 'light'
+        }
+      />
 
       {showSplash ? (
         <SplashScreen />
       ) : showLogin ? (
-        <LoginScreen
-          onSignUp={() => console.log('Open Sign Up')}
-          onForgotPassword={() =>
-            console.log('Open Forgot Password')
-          }
-          onLoginSuccess={() => console.log('Login successful')}
-        />
+        authScreen === 'login' ? (
+          <LoginScreen
+            onSignUp={() => setAuthScreen('signup')}
+            onForgotPassword={() =>
+              console.log('Open Forgot Password')
+            }
+            onLoginSuccess={() =>
+              console.log('Login successful')
+            }
+          />
+        ) : (
+          <SignupScreen
+            onSignIn={() => setAuthScreen('login')}
+            onSignupSuccess={() => setAuthScreen('login')}
+          />
+        )
       ) : onboardingStep === 1 ? (
         <OnboardingOneScreen
           onGetStarted={() => setOnboardingStep(2)}

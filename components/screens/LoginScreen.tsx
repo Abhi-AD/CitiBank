@@ -121,7 +121,7 @@ export default function LoginScreen({
       </Pressable>
 
       {/* Bottom Actions */}
-      <View className="mt-auto pt-5 pb-1">
+      <View className="pt-5 pb-1">
        {/* Sign In */}
        <View className="mt-[17px]">
         <PrimaryButton
