@@ -1,6 +1,7 @@
 import React from 'react';
 import OnboardingLayout from './OnboardingLayout';
 import { OnboardingScreenProps } from '../types/onboarding';
+import { Images } from 'constants/images';
 
 export default function OnboardingOneScreen({
  onGetStarted,
@@ -10,7 +11,7 @@ export default function OnboardingOneScreen({
   <OnboardingLayout
    title={['Your Goals.', 'Our Support.']}
    description="Manage your money, achieve your goals, all in one place."
-   image={require('../assets/banking-illustration.png')}
+   image={Images.bankingIllustration}
    onGetStarted={onGetStarted}
    onSkip={onSkip}
   />

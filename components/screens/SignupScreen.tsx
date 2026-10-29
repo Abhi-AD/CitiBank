@@ -7,6 +7,7 @@ import {
  ScrollView,
  KeyboardAvoidingView,
  Platform,
+ Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {
@@ -14,11 +15,14 @@ import {
  Mail,
  Smartphone,
  LockKeyhole,
+ ChevronLeft,
 } from 'lucide-react-native';
 
 import PrimaryButton from 'components/ui/PrimaryButton';
 import TextButton from 'components/ui/TextButton';
 import InputField from 'components/ui/InputField';
+import Button from 'components/ui/Button';
+import { Images } from 'constants/images';
 
 interface SignupScreenProps {
  onSignIn?: () => void;
@@ -42,7 +46,11 @@ export default function SignupScreen({
    !mobile.trim() ||
    !password
   ) {
-   console.warn('Please fill in all fields.');
+   Alert.alert(
+    'Missing Information',
+    'Please fill in all fields before continuing.',
+    [{ text: 'OK' }]
+   );
    return;
   }
 
@@ -64,20 +72,11 @@ export default function SignupScreen({
      bounces={false}
     >
      <View className="flex-1 px-[14px] pt-2 pb-4">
-
-      {/* Back Button */}
-      <Pressable
+      <Button
        onPress={onSignIn}
-       className="mb-3 h-9 w-9 items-center justify-center"
-       hitSlop={8}
-       accessibilityRole="button"
-       accessibilityLabel="Go back to sign in"
-      >
-       <Text className="text-[28px] text-white">
-        ‹
-       </Text>
-      </Pressable>
-
+       icon={ChevronLeft}
+       iconColor='#ffffff'
+      />
       {/* Signup Heading */}
       <View className="mb-[20px]">
        <Text className="text-[28px] font-bold text-white">
@@ -190,9 +189,9 @@ export default function SignupScreen({
       <TextButton
        title="Continue with Google"
        onPress={() => {
-        console.log('Google signup pressed');
+        Alert.alert('Google signup pressed');
        }}
-       imageSource={require('../../assets/google.png')}
+       imageSource={Images.google}
       />
 
       {/* Sign In Link */}

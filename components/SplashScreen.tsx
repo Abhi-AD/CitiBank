@@ -1,3 +1,4 @@
+import { Images } from 'constants/images';
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -7,7 +8,7 @@ export default function SplashScreen() {
   <View className="flex-1 bg-blue-950">
    {/* City skyline background */}
    <Image
-    source={require('../assets/city-skyline.jpg')}
+    source={Images.citySkyline}
     resizeMode="cover"
     className="absolute inset-0 h-full w-full"
    />
@@ -20,7 +21,7 @@ export default function SplashScreen() {
      {/* CitiBank logo */}
      <View className="mt-36  items-center">
       <Image
-       source={require('../assets/white_logo.png')}
+       source={Images.whiteLogo}
        resizeMode="contain"
        className="h-48 w-80"
       />
