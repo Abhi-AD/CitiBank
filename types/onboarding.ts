@@ -1,4 +1,4 @@
-import { ImageSourcePropType } from "react-native";
+import { ImageSourcePropType } from 'react-native';
 
 export interface OnboardingScreenProps {
   onGetStarted: () => void;
@@ -9,9 +9,9 @@ export interface OnboardingThreeProps {
   onSkip: () => void;
 }
 export interface OnboardingLayoutProps {
- title: string[];
- description: string;
- image: ImageSourcePropType;
- onGetStarted: () => void;
- onSkip: () => void;
+  title: string[];
+  description: string;
+  image: ImageSourcePropType;
+  onGetStarted: () => void;
+  onSkip: () => void;
 }

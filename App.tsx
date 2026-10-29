@@ -11,15 +11,18 @@ import OnboardingThreeScreen from './components/OnboardingThreeScreen';
 
 import LoginScreen from './components/screens/LoginScreen';
 import SignupScreen from './components/screens/SignupScreen';
+import OTPVerificationScreen from './components/screens/OTPVerificationScreen';
+import { Alert } from 'react-native';
 
-type AuthScreen = 'login' | 'signup';
+type AuthScreen = 'login' | 'signup' | 'otp';
+type OTPSource = 'login' | 'signup';
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
   const [onboardingStep, setOnboardingStep] = useState(1);
   const [showLogin, setShowLogin] = useState(false);
   const [authScreen, setAuthScreen] = useState<AuthScreen>('login');
-
+  const [otpSource, setOtpSource] = useState<OTPSource>('login');
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false);
@@ -34,9 +37,11 @@ export default function App() {
         style={
           showSplash
             ? 'light'
-            : !showLogin
+            : showLogin && authScreen !== 'login'
               ? 'dark'
-              : 'light'
+              : showLogin
+                ? 'light'
+                : 'dark'
         }
       />
 
@@ -46,17 +51,31 @@ export default function App() {
         authScreen === 'login' ? (
           <LoginScreen
             onSignUp={() => setAuthScreen('signup')}
-            onForgotPassword={() =>
-              console.log('Open Forgot Password')
-            }
-            onLoginSuccess={() =>
-              console.log('Login successful')
-            }
+            onForgotPassword={() => {
+              Alert.alert('Open Forgot Password');
+            }}
+            onLoginSuccess={() => {
+              setOtpSource('login');
+              setAuthScreen('otp');
+            }}
           />
-        ) : (
+        ) : authScreen === 'signup' ? (
           <SignupScreen
             onSignIn={() => setAuthScreen('login')}
-            onSignupSuccess={() => setAuthScreen('login')}
+            onSignupSuccess={() => {
+              setOtpSource('signup');
+              setAuthScreen('otp')
+            }}
+          />
+        ) : (
+          <OTPVerificationScreen
+            onBack={() => setAuthScreen(otpSource)}
+            onVerify={(otp) => {
+              Alert.alert('Entered OTP:', otp);
+            }}
+            onResend={() => {
+              Alert.alert('Request a new OTP');
+            }}
           />
         )
       ) : onboardingStep === 1 ? (

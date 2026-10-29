@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Pressable, Text, Image } from 'react-native';
 import type { ImageSourcePropType } from 'react-native';
@@ -8,6 +7,9 @@ interface TextButtonProps {
   onPress: () => void;
   disabled?: boolean;
   imageSource?: ImageSourcePropType;
+  textSize?: string;
+  textColor?: string;
+  className?: string;
 }
 
 export default function TextButton({
@@ -15,6 +17,9 @@ export default function TextButton({
   onPress,
   disabled = false,
   imageSource,
+  textSize = 'text-[15px]',
+  textColor = '#7189AB',
+  className = 'h-[54px] w-full rounded-full bg-white',
 }: TextButtonProps) {
   return (
     <Pressable
@@ -23,18 +28,21 @@ export default function TextButton({
       accessibilityRole="button"
       accessibilityState={{ disabled }}
       hitSlop={8}
-      className={`h-[54px] w-full flex-row items-center justify-center rounded-full bg-white ${disabled ? 'opacity-50' : 'active:opacity-90'
-        }`}
+      className={`flex-row items-center justify-center ${disabled ? 'opacity-50' : 'active:opacity-90'
+        } ${className}`}
     >
       {imageSource && (
         <Image
           source={imageSource}
-          className=" h-12 w-12"
+          className="h-12 w-12"
           resizeMode="contain"
         />
       )}
 
-      <Text className="text-[15px] font-medium text-[#7189AB]">
+      <Text
+        className={`${textSize} font-medium`}
+        style={{ color: textColor }}
+      >
         {title}
       </Text>
     </Pressable>

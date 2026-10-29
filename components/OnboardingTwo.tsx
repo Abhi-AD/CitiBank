@@ -1,5 +1,6 @@
 import OnboardingLayout from './OnboardingLayout';
 import { OnboardingScreenProps } from '../types/onboarding';
+import { Images } from 'constants/images';
 
 export default function OnboardingTwoScreen({
  onGetStarted,
@@ -9,7 +10,7 @@ export default function OnboardingTwoScreen({
   <OnboardingLayout
    title={['Secure', '& Convenient']}
    description="Enjoy safe, fast and easy banking anytime, anywhere."
-   image={require('../assets/security-illustration.png')}
+   image={Images.securityIllustration}
    onGetStarted={onGetStarted}
    onSkip={onSkip}
   />

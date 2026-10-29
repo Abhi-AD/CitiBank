@@ -8,6 +8,7 @@ import {
  Image,
  KeyboardAvoidingView,
  Platform,
+ Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { UserRound, LockKeyhole } from 'lucide-react-native';
@@ -15,6 +16,7 @@ import { UserRound, LockKeyhole } from 'lucide-react-native';
 import PrimaryButton from 'components/ui/PrimaryButton';
 import TextButton from 'components/ui/TextButton';
 import InputField from 'components/ui/InputField';
+import { Images } from 'constants/images';
 
 interface LoginScreenProps {
  onSignUp?: () => void;
@@ -48,7 +50,7 @@ export default function LoginScreen({
       {/* CitiBank Logo */}
       <View className="mt-1 mb-5 items-center">
        <Image
-        source={require('../../assets/white_logo.png')}
+        source={Images.whiteLogo}
         resizeMode="contain"
         className="h-[40px] w-[88px]"
        />
@@ -140,10 +142,10 @@ export default function LoginScreen({
        {/* Continue with Google */}
        <TextButton
         title="Continue with Google"
-        onPress={() =>
-         console.log('Google login pressed')
-        }
-        imageSource={require('../../assets/google.png')}
+        onPress={() => {
+         Alert.alert('Google Login', 'Google login pressed');
+        }}
+        imageSource={Images.google}
        />
 
        {/* Sign Up */}
