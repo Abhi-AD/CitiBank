@@ -14,9 +14,8 @@ import { ChevronLeft } from 'lucide-react-native';
 import Button from 'components/ui/Button';
 import { OTPVerificationScreenProps } from 'types/auth';
 import TextButton from 'components/ui/TextButton';
+import { OTP_LENGTH, RESEND_SECONDS } from 'constants/constantValue';
 
-const OTP_LENGTH = 6;
-const RESEND_SECONDS = 48;
 type OTPInputRef = React.ComponentRef<typeof TextInput>;
 export default function OTPVerificationScreen({
   phoneNumber = '+977 9812345678',

@@ -13,8 +13,9 @@ import LoginScreen from './components/screens/LoginScreen';
 import SignupScreen from './components/screens/SignupScreen';
 import OTPVerificationScreen from './components/screens/OTPVerificationScreen';
 import { Alert } from 'react-native';
+import ForgotPasswordScreen from 'components/screens/ForgotPasswordScreen';
 
-type AuthScreen = 'login' | 'signup' | 'otp';
+type AuthScreen = 'login' | 'signup' | 'otp' | 'forgot-password';
 type OTPSource = 'login' | 'signup';
 
 export default function App() {
@@ -51,9 +52,7 @@ export default function App() {
         authScreen === 'login' ? (
           <LoginScreen
             onSignUp={() => setAuthScreen('signup')}
-            onForgotPassword={() => {
-              Alert.alert('Open Forgot Password');
-            }}
+            onForgotPassword={() => setAuthScreen('forgot-password')}
             onLoginSuccess={() => {
               setOtpSource('login');
               setAuthScreen('otp');
@@ -67,7 +66,7 @@ export default function App() {
               setAuthScreen('otp')
             }}
           />
-        ) : (
+        ) : authScreen === 'otp' ? (
           <OTPVerificationScreen
             onBack={() => setAuthScreen(otpSource)}
             onVerify={(otp) => {
@@ -75,6 +74,13 @@ export default function App() {
             }}
             onResend={() => {
               Alert.alert('Request a new OTP');
+            }}
+          />
+        ) : (
+          <ForgotPasswordScreen
+            onBack={() => setAuthScreen('login')}
+            onSubmit={(email) => {
+              Alert.alert('Reset Password', `Reset link requested for ${email}`);
             }}
           />
         )

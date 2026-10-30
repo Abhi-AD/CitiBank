@@ -4,3 +4,7 @@ export interface OTPVerificationScreenProps {
   onVerify?: (otp: string) => void;
   onResend?: () => void;
 }
+export interface ForgotPasswordScreenProps {
+  onBack?: () => void;
+  onSubmit?: (email: string) => void;
+}
