@@ -5,15 +5,15 @@ import { useEffect, useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import SplashScreen from './components/SplashScreen';
-import OnboardingOneScreen from './components/OnboardingOneScreen';
-import OnboardingTwoScreen from './components/OnboardingTwo';
-import OnboardingThreeScreen from './components/OnboardingThreeScreen';
+import OnboardingOneScreen from './features/onboarding/OnboardingOneScreen';
+import OnboardingTwoScreen from './features/onboarding/OnboardingTwoScreen';
+import OnboardingThreeScreen from './features/onboarding/OnboardingThreeScreen';
 
-import LoginScreen from './components/screens/LoginScreen';
-import SignupScreen from './components/screens/SignupScreen';
-import OTPVerificationScreen from './components/screens/OTPVerificationScreen';
+import LoginScreen from './features/auth/screens/LoginScreen';
+import SignupScreen from './features/auth/screens/SignupScreen';
+import OTPVerificationScreen from './features/auth/screens/OTPVerificationScreen';
 import { Alert } from 'react-native';
-import ForgotPasswordScreen from 'components/screens/ForgotPasswordScreen';
+import ForgotPasswordScreen from 'features/auth/screens/ForgotPasswordScreen';
 
 type AuthScreen = 'login' | 'signup' | 'otp' | 'forgot-password';
 type OTPSource = 'login' | 'signup';
@@ -27,7 +27,7 @@ export default function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 2000);
+    }, 2000000000);
 
     return () => clearTimeout(timer);
   }, []);

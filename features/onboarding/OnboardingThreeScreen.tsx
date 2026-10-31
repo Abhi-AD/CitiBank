@@ -1,5 +1,5 @@
-import OnboardingLayout from './OnboardingLayout';
-import { OnboardingThreeProps } from '../types/onboarding';
+import OnboardingLayout from '../../components/common/OnboardingLayout';
+import { OnboardingThreeProps } from '../../types/onboarding';
 import { Images } from 'constants/images';
 
 export default function OnboardingThreeScreen({

@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import type { OnboardingLayoutProps } from '../types/onboarding';
-import PrimaryButton from './ui/PrimaryButton';
-import TextButton from './ui/TextButton';
+import type { OnboardingLayoutProps } from '../../types/onboarding';
+import PrimaryButton from '../ui/PrimaryButton';
+import TextButton from '../ui/TextButton';
 
 export default function OnboardingLayout({
  title,
