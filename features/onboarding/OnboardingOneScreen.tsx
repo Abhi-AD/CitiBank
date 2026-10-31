@@ -1,6 +1,6 @@
 import React from 'react';
-import OnboardingLayout from './OnboardingLayout';
-import { OnboardingScreenProps } from '../types/onboarding';
+import OnboardingLayout from '../../components/common/OnboardingLayout';
+import { OnboardingScreenProps } from '../../types/onboarding';
 import { Images } from 'constants/images';
 
 export default function OnboardingOneScreen({

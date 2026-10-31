@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function SplashScreen() {
  return (
-  <View className="flex-1 bg-blue-950">
+  <View className="flex-1 bg-blue-950 ">
    {/* City skyline background */}
    <Image
     source={Images.citySkyline}

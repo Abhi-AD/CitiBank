@@ -1,13 +1,20 @@
 export const Images = {
-  adaptiveIcon: require('../assets/adaptive-icon.png'),
-  bankingIllustration: require('../assets/banking-illustration.png'),
-  citySkyline: require('../assets/city-skyline.jpg'),
-  colorLogo: require('../assets/color-logo.png'),
-  futureIllustration: require('../assets/future-illustration.png'),
-  favicon: require('../assets/favicon.png'),
-  google: require('../assets/google.png'),
-  icon: require('../assets/icon.png'),
-  securityIllustration: require('../assets/security-illustration.png'),
-  splash: require('../assets/splash.png'),
-  whiteLogo: require('../assets/white_logo.png'),
+  // Images
+  bankingIllustration: require('../assets/images/banking-illustration.png'),
+  citySkyline: require('../assets/images/city-skyline.jpg'),
+  futureIllustration: require('../assets/images/future-illustration.png'),
+  securityIllustration: require('../assets/images/security-illustration.png'),
+
+  // Logos
+  colorLogo: require('../assets/logos/color-logo.png'),
+  whiteLogo: require('../assets/logos/white_logo.png'),
+
+  // Icons
+  adaptiveIcon: require('../assets/icons/adaptive-icon.png'),
+  favicon: require('../assets/icons/favicon.png'),
+  google: require('../assets/icons/google.png'),
+  icon: require('../assets/icons/icon.png'),
+
+  // Splash
+  splash: require('../assets/splash/splash.png'),
 };
