@@ -14,8 +14,9 @@ import SignupScreen from './features/auth/screens/SignupScreen';
 import OTPVerificationScreen from './features/auth/screens/OTPVerificationScreen';
 import { Alert } from 'react-native';
 import ForgotPasswordScreen from 'features/auth/screens/ForgotPasswordScreen';
+import TermsConditionsScreen from 'features/auth/screens/TermsConditionsScreen';
 
-type AuthScreen = 'login' | 'signup' | 'otp' | 'forgot-password';
+type AuthScreen = 'login' | 'signup' | 'otp' | 'forgot-password' | 'terms';
 type OTPSource = 'login' | 'signup';
 
 export default function App() {
@@ -27,7 +28,7 @@ export default function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 2000000000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -58,6 +59,22 @@ export default function App() {
               setAuthScreen('otp');
             }}
           />
+        ) : authScreen === 'terms' ? (
+          <TermsConditionsScreen
+            onBack={() => setAuthScreen('signup')}
+            onContinue={() => {
+              Alert.alert(
+                'Agreement Accepted',
+                'You have accepted the Terms & Conditions.',
+                [
+                  {
+                    text: 'OK',
+                    onPress: () => setAuthScreen('signup'),
+                  },
+                ],
+              );
+            }}
+          />
         ) : authScreen === 'signup' ? (
           <SignupScreen
             onSignIn={() => setAuthScreen('login')}
@@ -65,6 +82,7 @@ export default function App() {
               setOtpSource('signup');
               setAuthScreen('otp')
             }}
+            onTermsPress={() => setAuthScreen('terms')}
           />
         ) : authScreen === 'otp' ? (
           <OTPVerificationScreen

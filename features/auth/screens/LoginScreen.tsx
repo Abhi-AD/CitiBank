@@ -17,6 +17,7 @@ import PrimaryButton from 'components/ui/PrimaryButton';
 import TextButton from 'components/ui/TextButton';
 import InputField from 'components/ui/InputField';
 import { Images } from 'constants/images';
+import Button from 'components/ui/Button';
 
 interface LoginScreenProps {
  onSignUp?: () => void;
@@ -154,16 +155,13 @@ export default function LoginScreen({
          <Text className="text-[11px] text-[#A5B8D5]">
           Don&apos;t have an account?{' '}
          </Text>
-
-         <Pressable
+         <Button
+          text="Sign Up"
           onPress={onSignUp}
-          hitSlop={5}
-          accessibilityRole="button"
-         >
-          <Text className="text-[11px] font-semibold text-white">
-           Sign Up
-          </Text>
-         </Pressable>
+          textSize="text-[11px]"
+          textColor="#FFFFFF"
+         />
+
         </View>
        </View>
       </View>

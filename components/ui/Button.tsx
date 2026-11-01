@@ -32,7 +32,7 @@ export default function Button({
   <Pressable
    onPress={onPress}
    disabled={!onPress}
-   className={`mb-5 ${className}`}
+   className={`${className}`}
    hitSlop={8}
    accessibilityRole="button"
    accessibilityLabel={text}
