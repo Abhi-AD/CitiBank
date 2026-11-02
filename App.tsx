@@ -15,8 +15,9 @@ import OTPVerificationScreen from './features/auth/screens/OTPVerificationScreen
 import { Alert } from 'react-native';
 import ForgotPasswordScreen from 'features/auth/screens/ForgotPasswordScreen';
 import TermsConditionsScreen from 'features/auth/screens/TermsConditionsScreen';
+import PrivacyPolicyScreen from 'features/auth/screens/PrivacyPolice';
 
-type AuthScreen = 'login' | 'signup' | 'otp' | 'forgot-password' | 'terms';
+type AuthScreen = 'login' | 'signup' | 'otp' | 'forgot-password' | 'terms' | 'privacy';
 type OTPSource = 'login' | 'signup';
 
 export default function App() {
@@ -62,10 +63,28 @@ export default function App() {
         ) : authScreen === 'terms' ? (
           <TermsConditionsScreen
             onBack={() => setAuthScreen('signup')}
+            onViewPrivacyPolicy={() => setAuthScreen('privacy')}
             onContinue={() => {
               Alert.alert(
                 'Agreement Accepted',
                 'You have accepted the Terms & Conditions.',
+                [
+                  {
+                    text: 'OK',
+                    onPress: () => setAuthScreen('signup'),
+                  },
+                ],
+              );
+            }}
+          />
+        ) : authScreen === 'privacy' ? (
+          <PrivacyPolicyScreen
+            onBack={() => setAuthScreen('terms')}
+            onViewTerms={() => setAuthScreen('terms')}
+            onContinue={() => {
+              Alert.alert(
+                'Agreement Accepted',
+                'You have accepted the Privacy Policy.',
                 [
                   {
                     text: 'OK',
