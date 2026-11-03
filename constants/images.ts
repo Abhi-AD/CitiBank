@@ -4,6 +4,7 @@ export const Images = {
   citySkyline: require('../assets/images/city-skyline.jpg'),
   futureIllustration: require('../assets/images/future-illustration.png'),
   securityIllustration: require('../assets/images/security-illustration.png'),
+  profile: require('../assets/images/profile.jpg'),
 
   // Logos
   colorLogo: require('../assets/logos/color-logo.png'),
