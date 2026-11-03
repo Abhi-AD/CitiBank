@@ -12,6 +12,7 @@ interface ButtonProps {
  textColor?: string;
  textSize?: string;
  className?: string;
+ containerClassName?: string;
 }
 
 export default function Button({
@@ -23,6 +24,7 @@ export default function Button({
  textColor = '#102F60',
  textSize = 'text-base',
  className = '',
+ containerClassName = 'min-h-9 flex-row items-center',
 }: ButtonProps) {
  if (!Icon && !text) {
   return null;
@@ -37,7 +39,7 @@ export default function Button({
    accessibilityRole="button"
    accessibilityLabel={text}
   >
-   <View className="min-h-9 flex-row items-center">
+   <View className={containerClassName}>
     {Icon && (
      <Icon
       size={iconSize}

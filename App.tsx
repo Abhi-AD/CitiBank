@@ -16,6 +16,7 @@ import { Alert } from 'react-native';
 import ForgotPasswordScreen from 'features/auth/screens/ForgotPasswordScreen';
 import TermsConditionsScreen from 'features/auth/screens/TermsConditionsScreen';
 import PrivacyPolicyScreen from 'features/auth/screens/PrivacyPolice';
+import HomeScreen from 'features/home/screens/HomeScreen';
 
 type AuthScreen = 'login' | 'signup' | 'otp' | 'forgot-password' | 'terms' | 'privacy';
 type OTPSource = 'login' | 'signup';
@@ -26,6 +27,7 @@ export default function App() {
   const [showLogin, setShowLogin] = useState(false);
   const [authScreen, setAuthScreen] = useState<AuthScreen>('login');
   const [otpSource, setOtpSource] = useState<OTPSource>('login');
+  const [showHome, setShowHome] = useState(false);
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false);
@@ -40,16 +42,20 @@ export default function App() {
         style={
           showSplash
             ? 'light'
-            : showLogin && authScreen !== 'login'
+            : showHome
               ? 'dark'
-              : showLogin
-                ? 'light'
-                : 'dark'
+              : showLogin && authScreen !== 'login'
+                ? 'dark'
+                : showLogin
+                  ? 'light'
+                  : 'dark'
         }
       />
 
       {showSplash ? (
         <SplashScreen />
+      ) : showHome ? (
+        <HomeScreen />
       ) : showLogin ? (
         authScreen === 'login' ? (
           <LoginScreen
@@ -107,7 +113,7 @@ export default function App() {
           <OTPVerificationScreen
             onBack={() => setAuthScreen(otpSource)}
             onVerify={(otp) => {
-              Alert.alert('Entered OTP:', otp);
+              Alert.alert('OTP Verification', `Entered OTP: ${otp}`, [{ text: 'Continue', onPress: () => setShowHome(true), },],);
             }}
             onResend={() => {
               Alert.alert('Request a new OTP');
