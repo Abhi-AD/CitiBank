@@ -11,6 +11,7 @@ import {
 } from 'lucide-react-native';
 export const bottomTabs = [
   { title: 'Home', icon: Home },
+  { title: 'Accounts', icon: Wallet },
   { title: 'Cards', icon: CreditCard },
   { title: 'History', icon: History },
   { title: 'More', icon: Grid2X2 },
