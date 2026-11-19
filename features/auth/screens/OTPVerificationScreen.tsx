@@ -12,7 +12,7 @@ import OTPInput from 'components/ui/OTPInput';
 import PrimaryButton from 'components/ui/PrimaryButton';
 import { ChevronLeft } from 'lucide-react-native';
 import Button from 'components/ui/Button';
-import { OTPVerificationScreenProps } from 'types/auth';
+import { OTPVerificationScreenProps } from 'types/auth.types';
 import TextButton from 'components/ui/TextButton';
 import { OTP_LENGTH, RESEND_SECONDS } from 'constants/constantValue';
 
