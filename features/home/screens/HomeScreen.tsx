@@ -10,6 +10,7 @@ import BalanceInfo from '../components/BalanceInfo';
 import { Images } from 'constants/images';
 import { useState } from 'react';
 import AccountsScreen from 'features/accounts/screens/AccountsScreen';
+import AccountDetailsScreen from 'features/accounts/screens/AccountDetailsScreen';
 
 export default function HomeScreen() {
  const [activeTab, setActiveTab] = useState('Home');
@@ -19,7 +20,11 @@ export default function HomeScreen() {
     showsVerticalScrollIndicator={false}
     contentContainerStyle={{ paddingBottom: 20 }}
    >
-    {activeTab === 'Accounts' ? (
+    {activeTab === 'AccountDetails' ? (
+     <AccountDetailsScreen
+      onBack={() => setActiveTab('Home')}
+     />
+    ) : activeTab === 'Accounts' ? (
      <AccountsScreen onBack={() => setActiveTab('Home')} />
     ) : (
      <>
@@ -46,13 +51,13 @@ export default function HomeScreen() {
          />
 
          {/* Profile */}
-         <View className="h-10 w-10 overflow-hidden rounded-full bg-[#DCEBFA]">
+         <Pressable onPress={() => setActiveTab('AccountDetails')} className="h-10 w-10 overflow-hidden rounded-full bg-[#DCEBFA]">
           <Image
            source={Images.profile}
            className="h-full w-full"
            resizeMode="cover"
           />
-         </View>
+         </Pressable>
         </View>
        </View>
       </View>

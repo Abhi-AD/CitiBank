@@ -1,5 +1,5 @@
 import OnboardingLayout from '../../components/common/OnboardingLayout';
-import { OnboardingScreenProps } from '../../types/onboarding';
+import { OnboardingScreenProps } from '../../types/onboarding.types';
 import { Images } from 'constants/images';
 
 export default function OnboardingTwoScreen({

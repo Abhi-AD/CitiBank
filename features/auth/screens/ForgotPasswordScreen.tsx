@@ -12,7 +12,7 @@ import { ChevronLeft } from 'lucide-react-native';
 import PrimaryButton from 'components/ui/PrimaryButton';
 import Button from 'components/ui/Button';
 import TextButton from 'components/ui/TextButton';
-import { ForgotPasswordScreenProps } from 'types/auth';
+import { ForgotPasswordScreenProps } from 'types/auth.types';
 import { isValidEmail } from 'constants/constantValue';
 
 export default function ForgotPasswordScreen({ onBack, onSubmit, }: ForgotPasswordScreenProps) {

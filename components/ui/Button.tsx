@@ -13,6 +13,7 @@ interface ButtonProps {
  textSize?: string;
  className?: string;
  containerClassName?: string;
+ vertical?: boolean;
 }
 
 export default function Button({
@@ -25,32 +26,27 @@ export default function Button({
  textSize = 'text-base',
  className = '',
  containerClassName = 'min-h-9 flex-row items-center',
+ vertical = false,
 }: ButtonProps) {
- if (!Icon && !text) {
-  return null;
- }
+ if (!Icon && !text) return null;
 
  return (
   <Pressable
    onPress={onPress}
    disabled={!onPress}
-   className={`${className}`}
+   className={className}
    hitSlop={8}
    accessibilityRole="button"
    accessibilityLabel={text}
   >
    <View className={containerClassName}>
     {Icon && (
-     <Icon
-      size={iconSize}
-      color={iconColor}
-      strokeWidth={2}
-     />
+     <Icon size={iconSize} color={iconColor} strokeWidth={2} />
     )}
 
     {text && (
      <Text
-      className={`${textSize} font-medium ${Icon ? 'ml-1' : ''
+      className={`${textSize} font-medium ${Icon ? (vertical ? 'mt-2' : 'ml-1') : ''
        }`}
       style={{ color: textColor }}
      >
